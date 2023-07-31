@@ -9,8 +9,11 @@ function Expenses(props) {
 
   const filterChangeHandler = selectedYear => {
     setFilteredYear(selectedYear);
+    console.log(filteredYear);
   }
-  
+  // props.items.filter(gets each user per iteration and pass it to the callback i.e 
+  // (user)=> return apply the condition for filter here)
+  const filteredExpenses = props.items.filter(user => user.date.getFullYear().toString() === filteredYear)
 
   return (
     <div>
@@ -19,8 +22,9 @@ function Expenses(props) {
           selected={filteredYear}
           onFilteredYear={filterChangeHandler}
         />
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
+            key = {expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
