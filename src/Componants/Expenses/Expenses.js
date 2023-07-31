@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
-import "./Expenses.css";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from './ExpensesList'
+import "./Expenses.css";
 
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2020");
@@ -16,18 +16,20 @@ function Expenses(props) {
   const filteredExpenses = props.items.filter(
     (user) => user.date.getFullYear().toString() === filteredYear
   );
+    // CONTRLLING THE CONDITIONAL OUTPUT FROM HERE AND CAN ALSO BE DONE VIA A SEPARATE
+    // COMPONANT WHERE WE DONT NEED THE TERNARY OR JS ABUSE METHOD BECAUSE THE WHOLE THE JSX IS CHANGING THERE THATS WHY WE CAN RETURN A DIFFERENT JSX BASED ON A CONDITION WHILE HERE ONLY A PART OF THE JSX CODE WAS BEING CHANGED.
+  // let expensesContent = <h2 className="expenses_empty">No Expenses Found</h2>;
 
-  let expensesContent = <p className="expenses_empty">No Expenses Found</p>;
-
-  filteredExpenses.length > 0 &&
-    filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
+  // if (filteredExpenses.length > 0 ){
+  //   expensesContent = filteredExpenses.map((expense) => (
+  //     <ExpenseItem
+  //       key={expense.id}
+  //       title={expense.title}
+  //       amount={expense.amount}
+  //       date={expense.date}
+  //     />
+  //   ));
+  // }
   return (
     <div>
       <Card className="expenses">
@@ -35,7 +37,7 @@ function Expenses(props) {
           selected={filteredYear}
           onFilteredYear={filterChangeHandler}
         />
-        {expensesContent}
+        <ExpensesList items={filteredExpenses}/>
       </Card>
     </div>
   );
