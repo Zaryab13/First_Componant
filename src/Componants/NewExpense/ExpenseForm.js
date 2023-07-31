@@ -36,6 +36,7 @@ function ExpenseForm(props) {
     e.preventDefault();
 
     let expensesData = {
+      id: Math.floor(Math.random() * 1000),
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),

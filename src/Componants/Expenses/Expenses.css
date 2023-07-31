@@ -5,3 +5,7 @@
     width: 50rem;
     max-width: 95%;
   }
+.expenses_empty{
+  color: red;
+  padding: 1rem;
+}

@@ -27,10 +27,10 @@ const DUMMY_EXP = [
 
 const App = () => {
 
-const [expenses, setExpense] = useState(DUMMY_EXP);
+const [expenses, setExpenses] = useState(DUMMY_EXP);
 
   const newExpenseDataHandler = (expense) => {
-    setExpense((prevState)=>{
+    setExpenses((prevState)=>{
       console.log([...prevState, expense])
       return [...prevState, expense];
     });
